@@ -12,9 +12,20 @@ const userSchema = new Schema<UserModel>({
     required: true,
     unique: true,
   },
-  password: {
+  passwordHashed: {
     type: String,
     required: true,
+  },
+  isEmailVerified: {
+    type: Boolean,
+    default: false,
+  },
+  fullname: {
+    type: String,
+    required: true,
+  },
+  profilepic: {
+    type: String,
   },
   createdAt: {
     type: Date,
@@ -26,4 +37,4 @@ const userSchema = new Schema<UserModel>({
   },
 });
 
-export const User = model<UserModel>("User", userSchema);
+export const User = model<UserModel>("Users", userSchema);
