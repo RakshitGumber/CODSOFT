@@ -1,5 +1,7 @@
 import { Router } from "express";
 import { auth } from "./auth";
+import { blog } from "./blog";
+import { comments } from "./comments";
 
 const router = Router();
 
@@ -9,4 +11,7 @@ router.get("/", (req, res) => {
   });
 });
 router.use("/auth", auth);
+router.use("/blog", blog);
+router.use("/comment", comments);
+
 export default router;
