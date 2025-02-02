@@ -1,0 +1,10 @@
+---
+import PostArchiveLayout from "../layouts/PostArchiveLayout.astro";
+import { GetArchives } from "../utils/content";
+
+const archiveMap = await GetArchives();
+---
+
+<PostArchiveLayout
+  archiveMap={archiveMap}
+/>
