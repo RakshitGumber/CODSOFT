@@ -1,13 +1,6 @@
----
-import "../styles/animations.css";
-import "../styles/scrollbar.css";
-import "../styles/transitions.css";
-import "../styles/searchbar.css";
-import "overlayscrollbars/overlayscrollbars.css";
----
+@import "tailwindcss";
 
-<style is:global>
-  :root {
+:root {
     --primary-color: oklch(70% 0.15 300);
     --primary-color-lighten: oklch(95% 0.02 300);
     --primary-color-hover: oklch(90% 0.025 300);
@@ -33,9 +26,9 @@ import "overlayscrollbars/overlayscrollbars.css";
 
     --onload-animation-delay: 100ms;
     --onload-animation-interval: 100ms;
-  }
+}
 
-  :root.dark {
+:root.dark {
     --primary-color: oklch(70% 0.125 300);
     --primary-color-lighten: oklch(40% 0.04 300);
     --primary-color-hover: oklch(20% 0.015 300);
@@ -45,10 +38,8 @@ import "overlayscrollbars/overlayscrollbars.css";
     --card-color-lighten: oklch(40% 0.04 300);
     --card-color-transparent: oklch(30% 0.025 300 / 85%);
     --background-color: oklch(17.5% 0.015 300);
-  }
+}
 
-  .swup-progress-bar {
-    height: 5px;
-    background-color: var(--primary-color);
-  }
-</style>
+html {
+    @apply bg-[var(--background-color)] text-[var(--text-color)];
+}

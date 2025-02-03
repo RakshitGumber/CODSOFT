@@ -1,0 +1,18 @@
+---
+import NavBar from "../components/NavBar.astro";
+import Layout from "../layouts/MainLayout.astro";
+---
+
+<Layout title="Animee"><NavBar /></Layout>
+
+<script>
+  import { isLoggedIn } from "../store/userStore";
+
+  const findUser = () => {
+    const user = localStorage.getItem("user");
+    if (user) isLoggedIn.set(true);
+    else isLoggedIn.set(false);
+  };
+
+  document.addEventListener("DOMContentLoaded", findUser);
+</script>

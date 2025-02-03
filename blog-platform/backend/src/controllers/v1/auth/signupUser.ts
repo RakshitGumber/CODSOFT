@@ -20,8 +20,9 @@ export default async (
         const data = await existingEmail.updateOne({
           username,
           email,
-          password: passwordHashed,
+          passwordHashed,
           fullname,
+          updatedAt: new Date(),
         });
 
         if (!data) {
@@ -30,10 +31,17 @@ export default async (
             message: "Error updating user",
           };
         }
+
         return {
           success: true,
           message: "Email sent for verification",
-          data,
+          data: {
+            username,
+            email,
+            passwordHashed,
+            fullname,
+            updatedAt: new Date(),
+          },
         };
       }
       return {
@@ -45,7 +53,7 @@ export default async (
     const user = await User.create({
       username,
       email,
-      password: passwordHashed,
+      passwordHashed,
       fullname,
     });
     await sendVerificationEmail(email, fullname, verificationUrl);

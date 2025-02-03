@@ -1,0 +1,80 @@
+---
+import { Icon } from "astro-icon/components";
+---
+
+<button type="button" id="theme-switcher">
+  <Icon
+    id="theme-icon-light"
+    name="line-md:moon-alt-to-sunny-outline-loop-transition"
+    size={28}
+    class="hidden"
+  />
+  <Icon
+    id="theme-icon-dark"
+    name="line-md:sunny-outline-to-moon-alt-loop-transition"
+    size={28}
+    class="hidden"
+  />
+</button>
+
+<style>
+  #themeToggle {
+    border: 0;
+    background: none;
+  }
+  .sun {
+    fill: black;
+  }
+  .moon {
+    fill: transparent;
+  }
+
+  :global(.dark) .sun {
+    fill: transparent;
+  }
+  :global(.dark) .moon {
+    fill: white;
+  }
+</style>
+
+<script is:inline>
+  const reinitializeIcon = (icon) => {
+    const cloned = icon.cloneNode(true);
+    icon.parentNode?.replaceChild(cloned, icon);
+    return cloned;
+  };
+
+  const themeSwitcher = document.getElementById("theme-switcher");
+  let themeIconLight = document.getElementById("theme-icon-light");
+  let themeIconDark = document.getElementById("theme-icon-dark");
+
+  // Record the current theme
+  let currentTheme = localStorage.getItem("theme") || "light";
+
+  // Set theme
+  const setTheme = (theme) => {
+    document.documentElement.setAttribute("data-theme", theme);
+    localStorage.setItem("theme", theme);
+    currentTheme = theme;
+
+    // Show/hide icons for different themes
+    themeIconDark.style.display = theme === "dark" ? "block" : "none";
+    themeIconLight.style.display = theme === "light" ? "block" : "none";
+
+    // If the theme is dark, update the dark icon; otherwise, update the light icon
+    if (theme === "dark") themeIconDark = reinitializeIcon(themeIconDark);
+    else themeIconLight = reinitializeIcon(themeIconLight);
+
+    // Toggle dark class
+    document.documentElement.classList.toggle("dark", theme === "dark");
+  };
+
+  // Click to switch theme
+  themeSwitcher.addEventListener("click", () => {
+    setTheme(currentTheme === "light" ? "dark" : "light");
+  });
+
+  document.addEventListener("DOMContentLoaded", () => {
+    setTheme(currentTheme);
+  });
+</script>
