@@ -3,7 +3,10 @@ import NavBar from "../components/NavBar.astro";
 import Layout from "../layouts/MainLayout.astro";
 ---
 
-<Layout title="Animee"><NavBar /></Layout>
+<Layout title="Animee">
+  <NavBar />
+  <button id="create">Create</button>
+</Layout>
 
 <script>
   import { isLoggedIn } from "../store/userStore";
@@ -15,4 +18,11 @@ import Layout from "../layouts/MainLayout.astro";
   };
 
   document.addEventListener("DOMContentLoaded", findUser);
+</script>
+
+<script>
+  const create = document.getElementById("create") as HTMLElement;
+  create.addEventListener("click", () => {
+    location.href = "/create";
+  });
 </script>

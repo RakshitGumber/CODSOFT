@@ -1,6 +1,8 @@
 import jwt from "jsonwebtoken";
 import type { Request, Response, NextFunction } from "express";
 
+let decoded: any;
+
 export const verifyToken = (
   req: Request,
   res: Response,
@@ -21,13 +23,15 @@ export const verifyToken = (
     if (!process.env.JWT_SECRET) {
       throw new Error("JWT_SECRET is not defined");
     }
-    const decoded = jwt.verify(token, process.env.JWT_SECRET);
-    (req as any).user = decoded;
+    decoded = jwt.verify(token, process.env.JWT_SECRET);
+    (req as any).email = decoded;
     next();
   } catch (error) {
     return res.status(403).json({
       success: false,
       message: "Invalid or expired token.",
+      error: error,
+      decoded,
     });
   }
 };
