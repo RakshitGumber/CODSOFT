@@ -3,57 +3,177 @@ import { Icon } from "astro-icon/components";
 import ThemeButton from "./controllers/ThemeButton.astro";
 ---
 
-<nav id="nav" class="flex items-center justify-between">
-  <button id="menu-switcher" type="button">
-    <Icon
-      id="menu-icon-closed"
-      size={24}
-      name="line-md:close-to-menu-transition"
-      class="mx-auto"
-    />
-    <!-- <Icon
-      id="menu-icon-opened"
-      size={24}
-      name="line-md:menu-to-close-transition"
-      class="mx-auto hidden"
-    /> -->
-  </button>
-  <h1 id="Logo">
-    <a href="/">Animee</a>
-  </h1>
-  <div class="flex">
-    <ThemeButton />
-    <div id="user">
-      <button id="signup-button" class="hidden">
-        <a href="/auth/signup">Sign Up</a>
-      </button>
-      <img id="profile-icon" class="" />
+<nav
+  id="nav"
+  class="absolute top-0 left-1/2 -translate-x-1/2 h-[72px] w-full lg:w-[var(--page-width-lg)] xl:w-[var(--page-width-xl)] p-2.5 z-50 bg-[var(--card-color-transparent)] backdrop-blur rounded-b-xl"
+>
+  <div class="w-full h-full grid grid-cols-3 place-items-center">
+    <button
+      id="menu-toggle"
+      type="button"
+      class="mr-auto lg:hidden p-2.5 hover:bg-[var(--primary-color-hover)] rounded-lg hover:text-[var(--primary-color)]"
+    >
+      <Icon
+        id="menu-icon-closed"
+        size={24}
+        name="line-md:close-to-menu-transition"
+        class="mx-auto block"
+      />
+      <Icon
+        id="menu-icon-opened"
+        size={24}
+        name="line-md:menu-to-close-transition"
+        class="mx-auto hidden"
+      />
+    </button>
+    <h1
+      id="Logo"
+      class="truncate rounded-lg px-4 py-2 text-2xl font-medium text-[var(--primary-color)] transition-all hover:bg-[var(--primary-color-hover)] lg:flex lg:h-full lg:flex-row lg:content-center lg:items-center lg:text-2xl lg:text-[var(--primary-color)] lg:mr-auto"
+      style="font-family: var(--brand-font);"
+    >
+      <a href="/">Animee</a>
+    </h1>
+    <div
+      id="navigations"
+      class="absolute hidden top-[72px] lg:relative w-screen lg:w-auto lg:top-0 lg:flex text-lg text-[var(--text-color)] lg:opacity-85 z-50 lg:bg-transparent bg-[var(--card-color-transparent)] lg:backdrop-blur-none backdrop-blur opacity-100 rounded-b-xl"
+    >
+      <ul
+        class="flex lg:flex-row flex-col lg:items-center space-y-1 justify-center lg:space-x-1"
+        id="nav-list"
+      >
+        <li
+          id="nav-item"
+          class="flex h-[3.25rem] items-center rounded-lg px-6 transition-all lg:hover:bg-[var(--primary-color-hover)] lg:hover:text-[var(--primary-color)] active:scale-95 cursor-pointer font-medium leading-normal"
+        >
+          <a href="/">Home</a>
+        </li>
+        <li
+          id="nav-item"
+          class="flex h-[3.25rem] items-center rounded-lg px-6 transition-all lg:hover:bg-[var(--primary-color-hover)] lg:hover:text-[var(--primary-color)] active:scale-95 cursor-pointer font-medium leading-normal"
+        >
+          <a href="/about">About</a>
+        </li>
+        <li
+          id="nav-item"
+          class="flex h-[3.25rem] items-center rounded-lg px-6 transition-all lg:hover:bg-[var(--primary-color-hover)] lg:hover:text-[var(--primary-color)] active:scale-95 cursor-pointer font-medium leading-normal"
+        >
+          <a href="https://github.com/RakshitGumber">GitHub</a>
+        </li>
+      </ul>
+    </div>
+    <div class="flex items-center justify-self-end gap-0.5">
+      <button
+        id="search-button"
+        class="lg:hidden p-2.5 hover:bg-[var(--primary-color-hover)] rounded-lg hover:text-[var(--primary-color)]"
+        ><Icon name="line-md:search" size="24" /></button
+      >
+      <div
+        id="search-box"
+        class="hidden lg:block absolute lg:relative top-[90px] lg:top-0 p-4 lg:p-0 bg-[var(--card-color)] lg:bg-transparent left-1/2 lg:left-0 -translate-x-1/2 lg:translate-0 z-50 rounded-lg"
+      >
+        <div class="flex bg-black/5 dark:bg-white/5 h-10 rounded-lg flex-row">
+          <label
+            for="search"
+            class="w-10 h-10 flex flex-row justify-center items-center pl-2 pr-1 hover:cursor-text text-gray-400"
+          >
+            <Icon name="line-md:search" size="24" />
+          </label>
+          <input
+            type="text"
+            placeholder="Search..."
+            class="w-36 text-[var(--text-color)] xl:focus:w-60 bg-transparent outline-none transition-all"
+          />
+        </div>
+      </div>
+      <ThemeButton />
+      <div id="user">
+        <button
+          class="inline-flex h-12 w-[100px] items-center justify-center rounded-lg bg-[var(--primary-color-lighten)] px-4 font-semibold text-[var(--text-color)] transition-colors focus:outline-none cursor-pointer"
+        >
+          <a href="/auth/signup">Sign Up</a>
+        </button>
+
+        <img
+          id="profile-icon"
+          class="w-8 h-8 mx-2 rounded-full hidden cursor-pointer"
+        />
+      </div>
     </div>
   </div>
-
-  <script>
-    import { isLoggedIn } from "../store/userStore";
-
-    const userElem = document.getElementById("user") as HTMLElement;
-    const profileIcon = document.getElementById(
-      "profile-icon"
-    ) as HTMLImageElement;
-    const signupButton = document.getElementById(
-      "signup-button"
-    ) as HTMLElement;
-
-    isLoggedIn.subscribe((user) => {
-      if (user) {
-        profileIcon.classList.remove("hidden");
-        signupButton.classList.add("hidden");
-        const user = JSON.parse(localStorage.getItem("user")!);
-        profileIcon.src =
-          user.image ??
-          `https://ui-avatars.com/api/?name=${user.fullname.split(" ")[0]}+${user.fullname.split(" ")[1]}`;
-      } else {
-        profileIcon.classList.add("hidden");
-        signupButton.classList.remove("hidden");
-      }
-    });
-  </script>
 </nav>
+
+<script>
+  const searchButton = document.getElementById("search-button") as HTMLElement;
+  const searchBox = document.getElementById("search-box") as HTMLElement;
+
+  searchButton.addEventListener("click", () => {
+    searchBox.classList.toggle("hidden");
+  });
+</script>
+
+<script>
+  const reinitializeIcon = (icon: SVGElement) => {
+    const cloned = icon.cloneNode(true) as SVGElement;
+    icon.parentNode?.replaceChild(cloned, icon);
+    return cloned;
+  };
+
+  let menuIconClosed = document.getElementById(
+    "menu-icon-closed"
+  ) as any as SVGElement;
+  let menuIconOpened = document.getElementById(
+    "menu-icon-opened"
+  ) as any as SVGElement;
+
+  const menuToggle = document.getElementById(
+    "menu-toggle"
+  ) as HTMLButtonElement;
+  const navigations = document.getElementById(
+    "navigations"
+  ) as HTMLUListElement;
+
+  const nav = document.getElementById("nav") as HTMLDivElement;
+
+  menuToggle.onclick = () => {
+    navigations.classList.toggle("hidden");
+    if (navigations.classList.contains("hidden")) {
+      nav.classList.replace("rounded-none", "rounded-b-xl");
+      menuIconOpened.classList.replace("block", "hidden");
+      menuIconClosed.classList.replace("hidden", "block");
+      menuIconClosed = reinitializeIcon(menuIconClosed);
+    } else {
+      nav.classList.replace("rounded-b-xl", "rounded-none");
+      menuIconOpened.classList.replace("hidden", "block");
+      menuIconClosed.classList.replace("block", "hidden");
+      menuIconOpened = reinitializeIcon(menuIconOpened);
+    }
+  };
+
+  window.addEventListener("resize", () => {
+    nav.classList.replace("rounded-none", "rounded-b-xl");
+  });
+</script>
+
+<script>
+  import { isLoggedIn } from "../store/userStore";
+  const profileIcon = document.getElementById(
+    "profile-icon"
+  ) as HTMLImageElement;
+  const signupButton = document.getElementById("signup-button") as HTMLElement;
+
+  isLoggedIn.subscribe((user) => {
+    if (user) {
+      profileIcon.classList.remove("hidden");
+      signupButton.classList.add("hidden");
+      const user = JSON.parse(localStorage.getItem("user")!);
+      profileIcon.src =
+        user.avatar ??
+        `https://ui-avatars.com/api/?name=${user.fullname.split(" ")[0]}+${user.fullname.split(" ")[1]}`;
+      profileIcon.alt = user.fullname;
+      profileIcon.title = user.fullname;
+    } else {
+      profileIcon.classList.add("hidden");
+      signupButton.classList.remove("hidden");
+    }
+  });
+</script>

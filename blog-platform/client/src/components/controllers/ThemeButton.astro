@@ -2,7 +2,11 @@
 import { Icon } from "astro-icon/components";
 ---
 
-<button type="button" id="theme-switcher">
+<button
+  type="button"
+  id="theme-switcher"
+  class="p-2.5 hover:bg-[var(--primary-color-hover)] rounded-lg hover:text-[var(--primary-color)]"
+>
   <Icon
     id="theme-icon-light"
     name="line-md:moon-alt-to-sunny-outline-loop-transition"
