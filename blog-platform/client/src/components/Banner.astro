@@ -1,0 +1,151 @@
+---
+let carouselImgsList = [
+  "/slides/slide-1.avif",
+  "/slides/slide-2.webp",
+  "/slides/slide-3.avif",
+];
+const carouselAnimationTime = `${carouselImgsList.length * 6}s`;
+---
+
+<header
+  id="hero"
+  class="relative h-[calc(var(--banner-height)*3/4)] opacity-100 lg:h-[var(--banner-height)]"
+>
+  <div class="transition-main banner-inner h-full w-full">
+    <div
+      class="carousel absolute left-0 top-0 -z-10 block h-[calc(var(--banner-height)*3/4)] w-full overflow-hidden bg-white lg:h-[var(--banner-height)] before:absolute before:left-0 before:top-0 before:z-10 before:block before:h-full before:w-full before:bg-black/25 before:transition-all before:content-[''] before:dark:bg-black/30"
+    >
+      <ul id="carousel_imgs">
+        {
+          carouselImgsList.map((img, index) => (
+            <li
+              class="item lozad absolute left-0 top-0 z-0 h-full w-full origin-center bg-cover bg-center bg-no-repeat opacity-0"
+              style={{ animationDelay: `${index * 6}s` }}
+              data-background-image={img}
+            />
+          ))
+        }
+      </ul>
+    </div>
+  </div>
+  <div
+    class="waves absolute -bottom-[1px] h-[10vh] max-h-[9.375rem] min-h-[3.125rem] w-full md:h-[15vh]"
+    id="header-waves"
+  >
+    <svg
+      class="waves absolute -bottom-[1px] h-[10vh] max-h-[9.375rem] min-h-[3.125rem] w-full md:h-[15vh]"
+      xmlns="http://www.w3.org/2000/svg"
+      xmlns:xlink="http://www.w3.org/1999/xlink"
+      viewBox="0 24 150 28"
+      preserveAspectRatio="none"
+      shape-rendering="auto"
+    >
+      <defs>
+        <path
+          id="gentle-wave"
+          d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z"
+        >
+        </path>
+      </defs>
+      <g class="parallax fill-[var(--background-color)]">
+        <use
+          xlink:href="#gentle-wave"
+          x="48"
+          y="0"
+          class="opacity-25"
+          style={{ animationDelay: "-2s", animationDuration: "7s" }}></use>
+        <use
+          xlink:href="#gentle-wave"
+          x="48"
+          y="3"
+          class="opacity-50"
+          style={{ animationDelay: "-3s", animationDuration: "10s" }}></use>
+        <use
+          xlink:href="#gentle-wave"
+          x="48"
+          y="5"
+          class="opacity-75"
+          style={{ animationDelay: "-4s", animationDuration: "13s" }}></use>
+        <use
+          xlink:href="#gentle-wave"
+          x="48"
+          y="7"
+          style={{ animationDelay: "-5s", animationDuration: "20s" }}></use>
+      </g>
+    </svg>
+  </div>
+</header>
+
+<script>
+  const styleElement = document.createElement("style");
+  const carouselImgs = document.getElementById("carousel_imgs");
+  const carouselImgsCount = carouselImgs?.children.length ?? 0;
+
+  const carouselAnimation = `
+  @keyframes carousel-animation {
+    0% {
+      opacity: 0;
+      transform: scale(1);
+    }
+    3% {
+      opacity: 1;
+    }
+    8% {
+      opacity: 1;
+      animation-timing-function: ease-out;
+    }
+    ${100 / carouselImgsCount}% {
+      opacity: 1;
+    }
+    ${100 / carouselImgsCount + 50 / carouselImgsCount}% {
+      opacity: 0;
+      animation-timing-function: ease-out;
+    }
+    100% {
+      opacity: 0;
+      transform: scale(2);
+    }
+  }
+  `;
+  styleElement.textContent = carouselAnimation;
+  let bannerElement = document.getElementById("banner");
+  if (bannerElement && !bannerElement.querySelector("style"))
+    bannerElement.appendChild(styleElement);
+</script>
+
+<style define:vars={{ carouselAnimationTime }}>
+  .carousel {
+    animation-fill-mode: forwards;
+  }
+
+  .carousel .item {
+    animation: carousel-animation var(--carouselAnimationTime) linear infinite
+      0s;
+    backface-visibility: hidden;
+    transform-style: preserve-3d;
+  }
+
+  .waves > .parallax use {
+    animation: wave 25s cubic-bezier(0.5, 0.5, 0.45, 0.5) infinite;
+  }
+
+  @keyframes wave {
+    0% {
+      transform: translate3d(-90px, 0, 0);
+    }
+    100% {
+      transform: translate3d(85px, 0, 0);
+    }
+  }
+
+  @keyframes banner-onload-animation {
+    0% {
+      opacity: 0;
+      height: calc(var(--banner-height) + 4rem);
+    }
+    100% {
+      opacity: 1;
+      height: var(--banner-height);
+    }
+  }
+</style>

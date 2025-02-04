@@ -15,26 +15,22 @@ api.interceptors.request.use((config) => {
   return config;
 });
 
-// Response Interceptor (Handle Token Expiry)
 api.interceptors.response.use(
-  (response) => response, // Return response if no error
+  (response) => response,
   async (error) => {
     const originalRequest = error.config;
     if (error.response?.status === 401 && !originalRequest._retry) {
       originalRequest._retry = true;
 
       try {
-        // Attempt to refresh the token
         const refreshToken = localStorage.getItem("refreshToken");
         const { data } = await axios.post("https://your-api.com/refresh", {
           refreshToken,
         });
 
-        // Update tokens in NanoStore
         localStorage.setItem("accessToken", data.access_token);
         localStorage.setItem("refreshToken", data.refreshToken);
 
-        // Retry the original request with new token
         originalRequest.headers[
           "Authorization"
         ] = `Bearer ${data.access_token}`;
