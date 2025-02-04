@@ -6,6 +6,7 @@ import Layout from "../layouts/MainLayout.astro";
 <Layout title="Animee">
   <NavBar />
   <button id="create">Create</button>
+  <div id="blog"></div>
 </Layout>
 
 <script>
@@ -25,4 +26,28 @@ import Layout from "../layouts/MainLayout.astro";
   create.addEventListener("click", () => {
     location.href = "/create";
   });
+</script>
+
+<script>
+  import { getBlog } from "../api";
+
+  const populatePage = async () => {
+    const blogs = await getBlog();
+    blogs.data.data;
+
+    const blogElm = document.getElementById("blog") as HTMLElement;
+
+    blogElm.innerHTML = blogs.data.data
+      .map((blog: any) => {
+        return `
+        <div class="flex flex-col border p-4 gap-4">
+          <h1>${blog.title}</h1>
+          <p>${blog.body}</p>
+        </div>
+        `;
+      })
+      .join("");
+  };
+
+  populatePage();
 </script>
