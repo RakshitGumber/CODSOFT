@@ -1,0 +1,14 @@
+---
+import type { map } from "astro:schema";
+import BlogCard from "./BlogCard.astro";
+import { getCollection } from "astro:content";
+const blogs = await getCollection("blogs");
+---
+
+<div>
+  {
+    blogs.map((blog) => (
+      <BlogCard title={blog.data.title} body={blog.data.body} />
+    ))
+  }
+</div>

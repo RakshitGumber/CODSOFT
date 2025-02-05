@@ -7,25 +7,39 @@ let carouselImgsList = [
 const carouselAnimationTime = `${carouselImgsList.length * 6}s`;
 ---
 
-<header
-  id="hero"
-  class="relative h-[calc(var(--banner-height)*3/4)] opacity-100 lg:h-[var(--banner-height)]"
+<div
+  id="banner"
+  class="banner onload-animation-fade-in relative h-[calc(var(--banner-height)*3/4)] opacity-100 lg:h-[var(--banner-height)]"
 >
   <div class="transition-main banner-inner h-full w-full">
     <div
-      class="carousel absolute left-0 top-0 -z-10 block h-[calc(var(--banner-height)*3/4)] w-full overflow-hidden bg-white lg:h-[var(--banner-height)] before:absolute before:left-0 before:top-0 before:z-10 before:block before:h-full before:w-full before:bg-black/25 before:transition-all before:content-[''] before:dark:bg-black/30"
+      class="carousel absolute left-0 top-0 -z-10 block h-[calc(var(--banner-height)*3/4)] w-full overflow-hidden bg-white lg:h-[var(--banner-height)] before:absolute before:left-0 before:top-0 before:z-10 before:block before:h-full before:w-full before:bg-black/25 before:transition-all before:content-[''] dark:before:bg-black/30"
     >
       <ul id="carousel_imgs">
         {
           carouselImgsList.map((img, index) => (
-            <li
+            <img
               class="item lozad absolute left-0 top-0 z-0 h-full w-full origin-center bg-cover bg-center bg-no-repeat opacity-0"
               style={{ animationDelay: `${index * 6}s` }}
-              data-background-image={img}
+              src={img}
             />
           ))
         }
       </ul>
+    </div>
+
+    <div class="relative h-[95%] w-full">
+      <div
+        class="absolute left-1/2 top-1/2 w-4/5 -translate-x-1/2 -translate-y-1/2 lg:w-3/4"
+      >
+        <div class="flex flex-col">
+          <h1
+            class="title mt-8 text-center font-bold text-[var(--title-color)] drop-shadow-lg lg:mt-1 mb-0 text-6xl leading-[5rem] lg:mb-1 lg:text-8xl"
+          >
+            Animee
+          </h1>
+        </div>
+      </div>
     </div>
   </div>
   <div
@@ -47,7 +61,7 @@ const carouselAnimationTime = `${carouselImgsList.length * 6}s`;
         >
         </path>
       </defs>
-      <g class="parallax fill-[var(--background-color)]">
+      <g class="parallax">
         <use
           xlink:href="#gentle-wave"
           x="48"
@@ -74,13 +88,13 @@ const carouselAnimationTime = `${carouselImgsList.length * 6}s`;
       </g>
     </svg>
   </div>
-</header>
+</div>
 
 <script>
   const styleElement = document.createElement("style");
   const carouselImgs = document.getElementById("carousel_imgs");
   const carouselImgsCount = carouselImgs?.children.length ?? 0;
-
+  console.log(carouselImgsCount);
   const carouselAnimation = `
   @keyframes carousel-animation {
     0% {
@@ -125,7 +139,12 @@ const carouselAnimationTime = `${carouselImgsList.length * 6}s`;
     transform-style: preserve-3d;
   }
 
+  .title {
+    font-family: var(--title-font);
+  }
+
   .waves > .parallax use {
+    @apply fill-[var(--background-color)];
     animation: wave 25s cubic-bezier(0.5, 0.5, 0.45, 0.5) infinite;
   }
 

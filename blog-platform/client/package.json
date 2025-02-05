@@ -16,6 +16,7 @@
     "axios": "^1.7.9",
     "nanostore": "^1.2.1",
     "nanostores": "^0.11.3",
+    "overlayscrollbars": "^2.10.1",
     "tailwindcss": "^4.0.3"
   },
   "devDependencies": {

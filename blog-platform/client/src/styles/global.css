@@ -1,4 +1,6 @@
 @import "tailwindcss";
+@import "overlayscrollbars/overlayscrollbars.css";
+@import "../styles/scrollbar.css";
 
 :root {
     --primary-color: oklch(70% 0.15 300);

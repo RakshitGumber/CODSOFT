@@ -2,13 +2,22 @@
 import NavBar from "../components/NavBar.astro";
 import Layout from "../layouts/MainLayout.astro";
 import Banner from "../components/Banner.astro";
+import SideBar from "../components/SideBar.astro";
+import MainContainer from "../components/MainContainer.astro";
 ---
 
 <Layout title="Animee">
   <NavBar />
   <Banner />
-  <button id="create">Create</button>
-  <div id="blog"></div>
+  <div
+    id="container"
+    class="w-screen lg:w-[var(--page-width-lg)] xl:w-[var(--page-width-xl)] mx-auto mt-10 grid grid-cols-1 xl:grid-cols-[1fr_4fr] gap-6"
+  >
+    <SideBar />
+    <MainContainer />
+  </div>
+  <!-- <button id="create">Create</button>
+  <div id="blog"></div> -->
 </Layout>
 
 <script>
@@ -22,14 +31,7 @@ import Banner from "../components/Banner.astro";
 
   document.addEventListener("DOMContentLoaded", findUser);
 </script>
-
-<script>
-  const create = document.getElementById("create") as HTMLElement;
-  create.addEventListener("click", () => {
-    location.href = "/create";
-  });
-</script>
-
+<!-- 
 <script>
   import { getBlog } from "../api";
 
@@ -52,4 +54,4 @@ import Banner from "../components/Banner.astro";
   };
 
   populatePage();
-</script>
+</script> -->
