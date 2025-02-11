@@ -11,7 +11,7 @@ const carouselAnimationTime = `${carouselImgsList.length * 6}s`;
   id="banner"
   class="banner onload-animation-fade-in relative h-[calc(var(--banner-height)*3/4)] opacity-100 lg:h-[var(--banner-height)]"
 >
-  <div class="transition-main banner-inner h-full w-full">
+  <div class="transition-main banner-inner h-full">
     <div
       class="carousel absolute left-0 top-0 -z-10 block h-[calc(var(--banner-height)*3/4)] w-full overflow-hidden bg-white lg:h-[var(--banner-height)] before:absolute before:left-0 before:top-0 before:z-10 before:block before:h-full before:w-full before:bg-black/25 before:transition-all before:content-[''] dark:before:bg-black/30"
     >
@@ -28,7 +28,7 @@ const carouselAnimationTime = `${carouselImgsList.length * 6}s`;
       </ul>
     </div>
 
-    <div class="relative h-[95%] w-full">
+    <div class="relative h-[95%] w-screen">
       <div
         class="absolute left-1/2 top-1/2 w-4/5 -translate-x-1/2 -translate-y-1/2 lg:w-3/4"
       >

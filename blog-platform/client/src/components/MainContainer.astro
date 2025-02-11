@@ -5,7 +5,7 @@ import { getCollection } from "astro:content";
 const blogs = await getCollection("blogs");
 ---
 
-<div>
+<div class="flex flex-col gap-4 w-screen">
   {
     blogs.map((blog) => (
       <BlogCard title={blog.data.title} body={blog.data.body} />
