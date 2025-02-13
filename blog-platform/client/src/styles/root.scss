@@ -1,0 +1,28 @@
+@import "./variables";
+@import "./scrollbar";
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  text-decoration: none;
+  border: none;
+  background: none;
+  color: $text-color;
+  font-size: 1rem;
+  font-weight: normal;
+  outline: none;
+}
+
+html,
+body {
+  scroll-behavior: smooth;
+  background-color: $background;
+  color: $text-color;
+  font-family: "Outfit", sans-serif;
+}
+
+.container {
+  max-width: 1400px;
+  margin: 0 auto;
+}
