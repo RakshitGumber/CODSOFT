@@ -1,0 +1,62 @@
+---
+import MainLayout from "../../layouts/MainLayout.astro";
+---
+
+<MainLayout title="Sign Up">
+  <form>
+    <div>
+      <label for="fullname">Full Name</label>
+      <input type="text" name="fullname" />
+    </div>
+    <div>
+      <label for="email">Email</label>
+      <input type="email" name="email" />
+    </div>
+    <div>
+      <label for="username">Username</label>
+      <input type="text" name="username" />
+    </div>
+    <div>
+      <label for="password">Password</label>
+      <input type="password" name="password" />
+    </div>
+    <button id="signup">Sign Up</button>
+  </form>
+  <span>Already a user? <a href="/auth/login">Login</a></span>
+</MainLayout>
+
+<style>
+  input {
+    border: 1px solid black;
+  }
+</style>
+
+<!-- <script>
+  import { signup } from "../../api";
+  const username = document.querySelector(
+    "input[name=username]"
+  ) as HTMLInputElement;
+  const password = document.querySelector(
+    "input[name=password]"
+  ) as HTMLInputElement;
+  const fullname = document.querySelector(
+    "input[name=fullname]"
+  ) as HTMLInputElement;
+  const email = document.querySelector("input[name=email]") as HTMLInputElement;
+  const signupButton = document.getElementById("signup") as HTMLElement;
+
+  signupButton.addEventListener("click", async (e) => {
+    e.preventDefault();
+    const response = await signup({
+      username: username.value,
+      password: password.value,
+      fullname: fullname.value,
+      email: email.value,
+    });
+
+    if (response.status === 200) {
+      return (location.href = "/");
+    }
+    console.log(response);
+  });
+</script> -->

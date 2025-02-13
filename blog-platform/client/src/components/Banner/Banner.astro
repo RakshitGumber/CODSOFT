@@ -1,5 +1,47 @@
 ---
 import "./banner.scss";
+
+let carouselImgsList = [
+  "/slides/wall-1.webp",
+  "/slides/slide-1.avif",
+  "/slides/slide-2.webp",
+  "/slides/slide-3.avif",
+];
 ---
 
-<div id="banner">Hello</div>
+<div id="banner">
+  <div id="background">
+    {
+      carouselImgsList.map((img, index) => (
+        <img
+          src={img}
+          alt="background"
+          id="background-img"
+          style={{ animationDelay: `${index * 6}s` }}
+        />
+      ))
+    }
+    <div id="overlay"></div>
+  </div>
+  <div id="banner-content">
+    <div id="banner-container">
+      <div id="banner-text">
+        <h1>
+          Explore the World of <span class="hero-special">Anime</span> – Dive into
+          <span class="hero-special">Blogs</span>, Reviews & More!
+        </h1>
+        <p id="sub-heading">Stay up to date with latest Anime Trends!</p>
+      </div>
+      <div id="banner-buttons">
+        <button
+          class="btn-lg btn-primary"
+          onclick="window.location.href = '/blogs'">Browse</button
+        >
+        <button
+          class="btn-lg btn-outline"
+          onclick="window.location.href = '/about'">Learn More</button
+        >
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,19 @@
+@import "./variables";
+
+.btn-lg {
+  width: 250px;
+  padding: 20px 12px;
+  font-size: 1.5rem;
+  font-family: "Outfit", sans-serif;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.btn-primary {
+  background-color: $accent;
+}
+
+.btn-outline {
+  background: none;
+  border: 4px solid white;
+}

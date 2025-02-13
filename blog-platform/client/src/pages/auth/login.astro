@@ -1,0 +1,49 @@
+---
+import MainLayout from "../../layouts/MainLayout.astro";
+---
+
+<MainLayout title="Log In">
+  <form>
+    <div>
+      <label for="email">Email</label>
+      <input type="email" name="email" />
+    </div>
+    <div>
+      <label for="password">Password</label>
+      <input type="password" name="password" />
+    </div>
+    <button id="signup">Login</button>
+  </form>
+  <span>New to Animee? <a href="/auth/signup">Signup</a></span>
+</MainLayout>
+
+<style>
+  input {
+    border: 1px solid black;
+  }
+</style>
+
+<!-- <script>
+  import { login } from "../../api";
+
+  const password = document.querySelector(
+    "input[name=password]"
+  ) as HTMLInputElement;
+
+  const email = document.querySelector("input[name=email]") as HTMLInputElement;
+  const signupButton = document.getElementById("signup") as HTMLElement;
+
+  signupButton.addEventListener("click", async (e) => {
+    e.preventDefault();
+    const { data } = await login({
+      email: email.value,
+      password: password.value,
+    });
+    const { refreshToken, accessToken, user } = await data.data.data;
+    console.log(refreshToken, accessToken, user);
+    localStorage.setItem("user", JSON.stringify(user));
+    localStorage.setItem("refreshToken", refreshToken);
+    localStorage.setItem("accessToken", accessToken);
+    return (location.href = "/");
+  });
+</script> -->
