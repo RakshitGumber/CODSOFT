@@ -1,0 +1,30 @@
+---
+const { header } = Astro.props;
+---
+
+<div class="section">
+  <div class="container">
+    <h1 id={header} class="section-heading">{header}</h1>
+    <div>
+      <slot />
+    </div>
+  </div>
+</div>
+
+<style lang="scss">
+  .section {
+    margin: 2rem 0;
+    width: 100vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    .section-heading {
+      font-size: 4rem;
+      width: 100%;
+      text-align: left;
+      font-weight: 700;
+      text-transform: uppercase;
+    }
+  }
+</style>

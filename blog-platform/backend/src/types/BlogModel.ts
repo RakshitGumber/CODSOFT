@@ -5,7 +5,12 @@ export interface BlogModel {
   authorId: ObjectId;
   title: string;
   body: string;
+  views: number;
   state: "Published" | "Draft";
+  category: string;
+  tags: string[];
+  images: string[];
+  animeName: string;
   createdAt: Date;
   updatedAt: Date;
 }

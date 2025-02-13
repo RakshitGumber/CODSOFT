@@ -4,10 +4,19 @@ import { User } from "@/models/User";
 
 export default async (
   req: Request,
-  res: Response
+  res: Response,
+  sortType?: string
 ): Promise<Response<IResponse | IError>> => {
   try {
-    const data = await Blog.find().sort({ createdAt: -1 }).limit(20);
+    let sortQuery = {};
+
+    if (sortType === "latest") {
+      sortQuery = { createdAt: -1 };
+    } else if (sortType === "trending") {
+      sortQuery = { views: -1 };
+    }
+
+    const data = await Blog.find().sort(sortQuery).limit(10);
 
     if (!data) {
       return res.status(400).json({
@@ -41,10 +50,9 @@ export default async (
 
     return res.status(200).json({ success: true, data: mappedData });
   } catch (error) {
-    const err: IError = {
+    return res.status(500).json({
       success: false,
       message: JSON.stringify(error),
-    };
-    return res.status(500).json(err);
+    });
   }
 };

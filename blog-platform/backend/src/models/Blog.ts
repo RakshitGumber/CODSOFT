@@ -6,6 +6,22 @@ const blockSchema = new Schema<BlogModel>({
     type: Schema.Types.ObjectId,
     required: true,
   },
+  views: {
+    type: Number,
+    default: 0,
+  },
+  category: {
+    type: String,
+  },
+  tags: {
+    type: [String],
+  },
+  images: {
+    type: [String],
+  },
+  animeName: {
+    type: String,
+  },
   title: {
     type: String,
     required: true,

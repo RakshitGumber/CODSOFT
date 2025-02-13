@@ -3,6 +3,7 @@ export interface UserModel {
   username: string;
   fullname: string;
   email: string;
+  bio: string;
   isEmailVerified: boolean;
   passwordHashed: string;
   profilepic: string;

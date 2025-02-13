@@ -24,6 +24,9 @@ body {
 }
 
 .container {
-  max-width: 1400px;
-  margin: 0 auto;
+  width: 1400px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  align-items: center;
 }

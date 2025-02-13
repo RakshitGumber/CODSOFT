@@ -9,9 +9,13 @@ export default async (
   try {
     const { slug } = req.params;
 
-    const data = await Blog.findOne({ _id: slug });
-    const comments = await Comment.find({ blogId: slug });
+    const data = await Blog.findOneAndUpdate(
+      { _id: slug },
+      { $inc: { views: 1 } },
+      { new: true } // Returns the updated document
+    );
 
+    const comments = await Comment.find({ blogId: slug });
     if (!data) {
       return res.status(400).json({
         success: false,
@@ -19,7 +23,9 @@ export default async (
       });
     }
 
-    return res.status(200).json({ success: true, data: { ...data, comments } });
+    return res
+      .status(200)
+      .json({ success: true, data: { ...data.toObject(), comments } });
   } catch (error) {
     const err: IError = {
       success: false,

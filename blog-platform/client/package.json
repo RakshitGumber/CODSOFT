@@ -13,15 +13,12 @@
     "animejs": "^3.2.2",
     "astro": "^5.2.3",
     "astro-icon": "^1.1.5",
-    "axios": "^1.7.9",
     "nanostore": "^1.2.1",
     "nanostores": "^0.11.3",
-    "overlayscrollbars": "^2.10.1",
     "sass": "^1.84.0"
   },
   "devDependencies": {
     "@iconify/json": "^2.2.302",
-    "@iconify/tailwind": "^1.2.0",
     "@types/animejs": "^3.1.13"
   }
 }
