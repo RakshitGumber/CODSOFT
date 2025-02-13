@@ -1,5 +1,6 @@
 ---
 import "./navbar.scss";
+import { $users } from "../../store/userStore";
 ---
 
 <div id="navbar">
@@ -11,12 +12,63 @@ import "./navbar.scss";
       <li class="nav-item">
         <a
           href="https://github.com/RakshitGumber/CODSOFT/tree/main/blog-platform"
-          >GitHub</a
+          target="_blank">GitHub</a
         >
       </li>
     </ul>
     <div class="avatar">
-      <img src="/avatars_temp/avatar-2.png" alt="Rakshit" />
+      {
+        $users.get()._id !== "" ? (
+          <a href={`/user/${"username"}`}>
+            <img src="/avatars_temp/avatar-2.png" alt="Rakshit" />
+          </a>
+        ) : (
+          <a href="/auth/login">
+            <button id="login" class="btn-primary btn-sm">
+              Login
+            </button>
+          </a>
+        )
+      }
+    </div>
+  </div>
+  <button id="menu-toggle"
+    ><svg
+      xmlns="http://www.w3.org/2000/svg"
+      x="0px"
+      y="0px"
+      width="24"
+      height="24"
+      viewBox="0 0 50 50"
+      fill="currentColor"
+    >
+      <path
+        d="M 0 7.5 L 0 12.5 L 50 12.5 L 50 7.5 Z M 0 22.5 L 0 27.5 L 50 27.5 L 50 22.5 Z M 0 37.5 L 0 42.5 L 50 42.5 L 50 37.5 Z"
+      ></path>
+    </svg></button
+  >
+  <div id="mobile-navigation">
+    <div class="mobile-nav-item"><a href="/blogs">All Blogs</a></div>
+    <div class="mobile-nav-item"><a href="/about">About</a></div>
+    <div class="mobile-nav-item">
+      <a
+        href="https://github.com/RakshitGumber/CODSOFT/tree/main/blog-platform"
+        target="_blank">GitHub</a
+      >
+    </div>
+
+    <div class="mobile-avatar">
+      {
+        $users.get()._id !== "" ? (
+          <a href={`/user/${"username"}`}>
+            <img src="/avatars_temp/avatar-2.png" alt="Rakshit" />
+          </a>
+        ) : (
+          <a href="/auth/login">
+            <button id="login">Login</button>
+          </a>
+        )
+      }
     </div>
   </div>
 </div>

@@ -9,6 +9,15 @@
   cursor: pointer;
 }
 
+.btn-sm {
+  width: 100px;
+  padding: 8px;
+  font-size: 1.5rem;
+  font-family: "Outfit", sans-serif;
+  font-weight: 600;
+  cursor: pointer;
+}
+
 .btn-primary {
   background-color: $accent;
 }

@@ -2,29 +2,52 @@
 
 #navbar {
   top: 0;
-  width: 100vw;
   position: absolute;
   z-index: 50;
+  width: 100vw;
 
   display: flex;
-  height: 123px;
   align-items: center;
   justify-content: space-between;
-  padding: 32px 10%;
+
   text-transform: uppercase;
+  @media only screen and (max-width: 600px) {
+    padding: 16px 5%;
+  }
+  @media only screen and (min-width: 768px) {
+  }
+  @media only screen and (min-width: 992px) {
+  }
+  @media only screen and (min-width: 1200px) {
+    height: 123px;
+    padding: 32px 10%;
+  }
 }
 
 #logo {
   font-family: "Montserrat", "Outfit", sans-serif;
   font-weight: 800;
-  font-size: 3rem;
   color: $accent;
+  @media only screen and (max-width: 600px) {
+    font-size: 1.5rem;
+  }
+  @media only screen and (min-width: 768px) {
+  }
+  @media only screen and (min-width: 992px) {
+  }
+  @media only screen and (min-width: 1200px) {
+    font-size: 3rem;
+  }
 }
 
 #navigations {
-  display: flex;
   justify-content: space-between;
   align-items: center;
+  display: none;
+
+  @media only screen and (min-width: 768px) {
+    display: flex;
+  }
 }
 
 ul#nav-list {
@@ -40,10 +63,14 @@ ul#nav-list {
 
     a {
       font-weight: bold;
-      font-size: 24px;
       font-family: "Montserrat", "Outfit", sans-serif;
-      padding: 8px 16px;
+
       transition: all 0.1s linear;
+
+      @media only screen and (min-width: 1200px) {
+        font-size: 24px;
+        padding: 8px 16px;
+      }
     }
     :hover {
       color: black;
@@ -52,10 +79,53 @@ ul#nav-list {
   }
 }
 
-.avatar img,
 .avatar {
-  width: 50px;
-  height: 50px;
-  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-items: center;
+
+  img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    cursor: pointer;
+  }
+}
+
+#mobile-navigation {
+  position: absolute;
+  top: 70px;
+  left: 0;
+  z-index: 50;
+  width: 100vw;
+  display: flex;
+  gap: 16px;
+  flex-direction: column;
+
+  div {
+    width: 100%;
+    padding: 10px 5%;
+    a {
+      width: 100%;
+    }
+  }
+
+  #login {
+    background-color: $accent;
+  }
+
+  @media only screen and (min-width: 768px) {
+    display: none;
+  }
+}
+
+#menu-toggle {
+  background: none;
+  border: none;
   cursor: pointer;
+  color: $text-color;
+  padding: 10px;
+  @media only screen and (min-width: 768px) {
+    display: none;
+  }
 }
