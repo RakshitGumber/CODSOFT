@@ -7,6 +7,7 @@ import icon from "astro-icon";
 export default defineConfig({
   redirects: {
     "/auth": "/auth/login",
+    "/blogs": "/blog",
   },
 
   integrations: [icon()],
