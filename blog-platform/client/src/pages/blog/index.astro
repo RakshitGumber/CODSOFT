@@ -1,15 +1,29 @@
 ---
 import { getCollection } from "astro:content";
+import BlogCard from "../../components/BlogCard/BlogCard.astro";
+import MainLayout from "../../layouts/MainLayout.astro";
 
 const blogs = await getCollection("blogs");
 ---
 
-<ul>
-  {
-    blogs.map((blog) => (
-      <li>
-        <a href={`/blog/${blog.id}`}>{blog.data.title}</a>
-      </li>
-    ))
+<MainLayout title="Animee | Blogs">
+  <main>
+    {
+      blogs.map((blog) => (
+        <div class="card-md card-col">
+          <BlogCard data={blog} />
+        </div>
+      ))
+    }
+  </main>
+</MainLayout>
+
+<style>
+  main {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 2rem;
+    margin: 2rem;
   }
-</ul>
+</style>

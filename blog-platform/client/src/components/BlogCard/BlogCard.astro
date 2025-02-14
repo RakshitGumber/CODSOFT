@@ -1,0 +1,51 @@
+---
+import "./blogCard.scss";
+
+const { data } = Astro.props.data;
+
+const date = new Date(data.createdAt);
+---
+
+{
+  data.images.length !== 0 ? (
+    <img src={data.images[0]} alt="photo" class="card-image" />
+  ) : (
+    <img src="/slides/wall-1.webp" alt="photo" class="card-image" />
+  )
+}
+<div id="card-content">
+  <div id="card-timestamp">
+    <span
+      >{
+        date.toLocaleDateString("en-GB", {
+          day: "2-digit",
+          month: "long",
+          year: "2-digit",
+        })
+      }</span
+    >
+    <span>{data.views}</span>
+  </div>
+  <div id="card-tag">
+    {data.tags.length !== 0 && data.tags.map((tag: any) => <div>{tag}</div>)}
+    <div>Blog</div>
+  </div>
+  <h2>{data.title}</h2>
+  <p>{data.body.split(" ").slice(0, 40).join(" ") + "..."}</p>
+</div>
+<div id="card-author">
+  {
+    data.author.profilepic ? (
+      <img src={data.author.profilepic} alt={data.author.username} />
+    ) : (
+      <img
+        src={`https://ui-avatars.com/api/?name=${data.author.username}`}
+        alt={data.author.username}
+      />
+    )
+  }
+  <div>
+    <span id="subtext">Written By</span>
+    <span id="author">{data.author.username}</span>
+  </div>
+</div>

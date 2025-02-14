@@ -14,3 +14,17 @@ const { blog } = Astro.props;
 <h1>{blog.title}</h1>
 <p>{blog.body}</p>
 <span>{blog.author.username}</span>
+
+<script>
+  import { updateView } from "../../api";
+
+  const slug = window.location.pathname.split("/")[2];
+
+  (async () => {
+    try {
+      await updateView(slug);
+    } catch (error) {
+      console.log(error);
+    }
+  })();
+</script>

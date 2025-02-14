@@ -1,0 +1,18 @@
+---
+import { getCollection } from "astro:content";
+
+const blogs = await getCollection("latest");
+---
+
+<ul>
+  {
+    blogs.map((blog) => (
+      <li>
+        <a href={`/blog/${blog.id}`}>{blog.data.title}</a>
+        <span>{blog.data.author.username}</span>
+        <p>{blog.data.views}</p>
+        <p>{blog.data.createdAt}</p>
+      </li>
+    ))
+  }
+</ul>

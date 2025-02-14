@@ -1,0 +1,106 @@
+@import "../../styles/variables";
+
+.card-col {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.card-md {
+  width: 450px;
+  height: 600px;
+  cursor: pointer;
+}
+
+.card-md.card-col {
+  .card-image {
+    width: 450px;
+    height: 280px;
+    object-fit: cover;
+    object-position: center;
+  }
+
+  #card-content {
+    padding: 16px 0;
+    display: flex;
+    width: 450px;
+    flex-direction: column;
+    gap: 8px;
+    align-items: flex-start;
+    justify-content: flex-start;
+
+    #card-timestamp {
+      display: flex;
+      width: 450px;
+      align-items: flex-start;
+      justify-content: space-between;
+
+      span {
+        color: $secondary-text;
+        font-family: "Outfit", sans-serif;
+        font-weight: 300;
+        font-size: 1rem;
+      }
+    }
+    #card-tag {
+      display: flex;
+      gap: 4px;
+      width: 450px;
+      div {
+        padding: 2px 0;
+        color: $secondary-text;
+        font-family: "Outfit", sans-serif;
+        font-weight: 300;
+        font-size: 1rem;
+      }
+    }
+
+    h2 {
+      width: 450px;
+      font-family: "Outfit", sans-serif;
+      font-weight: 600;
+      font-size: 2rem;
+      color: $text-color;
+    }
+    p {
+      width: 450px;
+      font-family: "Outfit", sans-serif;
+      font-weight: 400;
+      font-size: 1rem;
+      color: $secondary-text;
+    }
+  }
+
+  #card-author {
+    display: flex;
+    width: 450px;
+    gap: 10px;
+    align-items: center;
+    flex-direction: row;
+    justify-content: flex-start;
+
+    img {
+      width: 64px;
+      height: 64px;
+      border-radius: 50%;
+      object-fit: cover;
+      object-position: center;
+    }
+    div {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+      #subtext {
+        font-family: "Outfit";
+        font-weight: 500;
+        color: $secondary-text;
+        font-size: 1rem;
+      }
+      #author {
+        font-family: "Outfit";
+        font-weight: 500;
+        font-size: 1.25rem;
+      }
+    }
+  }
+}

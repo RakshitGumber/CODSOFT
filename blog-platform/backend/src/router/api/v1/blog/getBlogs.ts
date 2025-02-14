@@ -30,7 +30,7 @@ export default async (
           ...blog.toObject(), // Convert Mongoose document to a plain object
           author: {
             _id: author?._id,
-            name: author?.fullname,
+            fullname: author?.fullname,
             username: author?.username,
             profilepic: author?.profilepic,
             bio: author?.bio,
