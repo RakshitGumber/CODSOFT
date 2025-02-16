@@ -3,7 +3,7 @@
 .card-col {
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: flex-start;
 }
 
 .card-md {
@@ -55,12 +55,16 @@
       }
     }
 
-    h2 {
+    h2 a {
       width: 450px;
       font-family: "Outfit", sans-serif;
       font-weight: 600;
       font-size: 2rem;
       color: $text-color;
+
+      :hover {
+        color: $accent;
+      }
     }
     p {
       width: 450px;

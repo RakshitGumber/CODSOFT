@@ -4,13 +4,14 @@ import Navbar from "../components/Navbar/Navbar.astro";
 import Banner from "../components/Banner/Banner.astro";
 import Links from "../components/Links/Links.astro";
 import Section from "../components/Sections/Section.astro";
+import Latest from "../components/Sections/Latest.astro";
+import Trending from "../components/Sections/Trending.astro";
 ---
 
 <MainLayout title="animee">
   <Navbar />
   <Banner />
   <Links />
-  <Section header="Trending" />
-  <Section header="Latest" />
-  <Section header="Explore" />
+  <Section header="Trending"><Trending /></Section>
+  <Section header="Latest"><Latest /></Section>
 </MainLayout>

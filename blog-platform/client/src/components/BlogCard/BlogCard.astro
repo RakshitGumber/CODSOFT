@@ -30,7 +30,7 @@ const date = new Date(data.createdAt);
     {data.tags.length !== 0 && data.tags.map((tag: any) => <div>{tag}</div>)}
     <div>Blog</div>
   </div>
-  <h2>{data.title}</h2>
+  <h2><a href={`/blog/${data.id}`}>{data.title}</a></h2>
   <p>{data.body.split(" ").slice(0, 40).join(" ") + "..."}</p>
 </div>
 <div id="card-author">
