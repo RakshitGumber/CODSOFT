@@ -72,3 +72,21 @@ import { $users } from "../../store/userStore";
     </div>
   </div>
 </div>
+
+<script>
+  const menuToggle = document.getElementById("menu-toggle");
+  const mobileNavigation = document.getElementById("mobile-navigation");
+  const navbar = document.getElementById("navbar");
+
+  menuToggle?.addEventListener("click", () => {
+    if (mobileNavigation) {
+      const isMenuOpen = mobileNavigation.style.display === "flex";
+
+      mobileNavigation.style.display = isMenuOpen ? "none" : "flex";
+
+      if (navbar) {
+        navbar.style.backgroundColor = isMenuOpen ? "" : "#00000098"; // Reset or change color
+      }
+    }
+  });
+</script>

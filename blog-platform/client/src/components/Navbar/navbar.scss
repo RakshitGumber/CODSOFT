@@ -9,12 +9,16 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
+  backdrop-filter: blur(4px);
+
+  padding: 16px 5%;
 
   text-transform: uppercase;
-  @media only screen and (max-width: 600px) {
-    padding: 16px 5%;
+  @media only screen and (min-width: 600px) {
   }
+
   @media only screen and (min-width: 768px) {
+    padding: 16px 5%;
   }
   @media only screen and (min-width: 992px) {
   }
@@ -28,12 +32,14 @@
   font-family: "Montserrat", "Outfit", sans-serif;
   font-weight: 800;
   color: $accent;
-  @media only screen and (max-width: 600px) {
-    font-size: 1.5rem;
+  font-size: 2.2rem;
+
+  @media only screen and (min-width: 600px) {
   }
   @media only screen and (min-width: 768px) {
   }
   @media only screen and (min-width: 992px) {
+    font-size: 2.5rem;
   }
   @media only screen and (min-width: 1200px) {
     font-size: 3rem;
@@ -55,18 +61,22 @@ ul#nav-list {
   list-style: none;
   justify-content: flex-start;
   align-items: center;
-  margin-right: 40px;
 
   .nav-item {
     cursor: pointer;
-    margin: 0 16px;
 
     a {
       font-weight: bold;
       font-family: "Montserrat", "Outfit", sans-serif;
 
       transition: all 0.1s linear;
-
+      @media only screen and (min-width: 768px) {
+        font-size: 16px;
+        padding: 8px;
+      }
+      @media only screen and (min-width: 992px) {
+        font-size: 20px;
+      }
       @media only screen and (min-width: 1200px) {
         font-size: 24px;
         padding: 8px 16px;
@@ -75,6 +85,24 @@ ul#nav-list {
     :hover {
       color: black;
       background: $accent;
+    }
+  }
+
+  @media only screen and (min-width: 768px) {
+    .nav-item {
+      margin: 0 16px;
+    }
+  }
+  @media only screen and (min-width: 992px) {
+    .nav-item {
+      margin: 0 16px;
+    }
+  }
+  @media only screen and (min-width: 1200px) {
+    margin-right: 40px;
+
+    .nav-item {
+      margin: 0 16px;
     }
   }
 }
@@ -94,19 +122,27 @@ ul#nav-list {
 
 #mobile-navigation {
   position: absolute;
-  top: 70px;
+
+  top: 79px;
+  padding-bottom: 16px;
   left: 0;
   z-index: 50;
   width: 100vw;
-  display: flex;
-  gap: 16px;
+  display: none;
+  gap: 12px;
   flex-direction: column;
+  background-color: #00000098;
+  backdrop-filter: blur(4px);
 
   div {
-    width: 100%;
+    width: 100vw;
     padding: 10px 5%;
     a {
-      width: 100%;
+      width: 100vw;
+
+      button {
+        padding: 8px 20px;
+      }
     }
   }
 
