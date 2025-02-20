@@ -6,6 +6,7 @@ export interface UserModel {
   isEmailVerified: boolean;
   passwordHashed: string;
   profilepic: string;
+  bio: string;
   createdAt: Date;
   updatedAt: Date;
 }

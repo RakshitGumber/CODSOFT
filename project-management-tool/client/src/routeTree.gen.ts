@@ -15,6 +15,7 @@ import { Route as HowImport } from './routes/how'
 import { Route as CoffeeImport } from './routes/coffee'
 import { Route as AboutImport } from './routes/about'
 import { Route as IndexImport } from './routes/index'
+import { Route as DashboardIndexImport } from './routes/dashboard/index'
 import { Route as AuthLoginImport } from './routes/auth/login'
 
 // Create/Update Routes
@@ -40,6 +41,12 @@ const AboutRoute = AboutImport.update({
 const IndexRoute = IndexImport.update({
   id: '/',
   path: '/',
+  getParentRoute: () => rootRoute,
+} as any)
+
+const DashboardIndexRoute = DashboardIndexImport.update({
+  id: '/dashboard/',
+  path: '/dashboard/',
   getParentRoute: () => rootRoute,
 } as any)
 
@@ -88,6 +95,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AuthLoginImport
       parentRoute: typeof rootRoute
     }
+    '/dashboard/': {
+      id: '/dashboard/'
+      path: '/dashboard'
+      fullPath: '/dashboard'
+      preLoaderRoute: typeof DashboardIndexImport
+      parentRoute: typeof rootRoute
+    }
   }
 }
 
@@ -99,6 +113,7 @@ export interface FileRoutesByFullPath {
   '/coffee': typeof CoffeeRoute
   '/how': typeof HowRoute
   '/auth/login': typeof AuthLoginRoute
+  '/dashboard': typeof DashboardIndexRoute
 }
 
 export interface FileRoutesByTo {
@@ -107,6 +122,7 @@ export interface FileRoutesByTo {
   '/coffee': typeof CoffeeRoute
   '/how': typeof HowRoute
   '/auth/login': typeof AuthLoginRoute
+  '/dashboard': typeof DashboardIndexRoute
 }
 
 export interface FileRoutesById {
@@ -116,14 +132,22 @@ export interface FileRoutesById {
   '/coffee': typeof CoffeeRoute
   '/how': typeof HowRoute
   '/auth/login': typeof AuthLoginRoute
+  '/dashboard/': typeof DashboardIndexRoute
 }
 
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/about' | '/coffee' | '/how' | '/auth/login'
+  fullPaths: '/' | '/about' | '/coffee' | '/how' | '/auth/login' | '/dashboard'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/about' | '/coffee' | '/how' | '/auth/login'
-  id: '__root__' | '/' | '/about' | '/coffee' | '/how' | '/auth/login'
+  to: '/' | '/about' | '/coffee' | '/how' | '/auth/login' | '/dashboard'
+  id:
+    | '__root__'
+    | '/'
+    | '/about'
+    | '/coffee'
+    | '/how'
+    | '/auth/login'
+    | '/dashboard/'
   fileRoutesById: FileRoutesById
 }
 
@@ -133,6 +157,7 @@ export interface RootRouteChildren {
   CoffeeRoute: typeof CoffeeRoute
   HowRoute: typeof HowRoute
   AuthLoginRoute: typeof AuthLoginRoute
+  DashboardIndexRoute: typeof DashboardIndexRoute
 }
 
 const rootRouteChildren: RootRouteChildren = {
@@ -141,6 +166,7 @@ const rootRouteChildren: RootRouteChildren = {
   CoffeeRoute: CoffeeRoute,
   HowRoute: HowRoute,
   AuthLoginRoute: AuthLoginRoute,
+  DashboardIndexRoute: DashboardIndexRoute,
 }
 
 export const routeTree = rootRoute
@@ -157,7 +183,8 @@ export const routeTree = rootRoute
         "/about",
         "/coffee",
         "/how",
-        "/auth/login"
+        "/auth/login",
+        "/dashboard/"
       ]
     },
     "/": {
@@ -174,6 +201,9 @@ export const routeTree = rootRoute
     },
     "/auth/login": {
       "filePath": "auth/login.tsx"
+    },
+    "/dashboard/": {
+      "filePath": "dashboard/index.tsx"
     }
   }
 }

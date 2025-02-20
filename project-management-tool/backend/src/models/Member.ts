@@ -9,7 +9,7 @@ const memberSchema = new Schema<MemberModel>({
   },
   projectId: {
     type: Schema.Types.ObjectId,
-    ref: "Users",
+    ref: "Projects",
     required: true,
   },
   role: {

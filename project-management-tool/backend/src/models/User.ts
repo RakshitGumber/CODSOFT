@@ -20,6 +20,9 @@ const userSchema = new Schema<UserModel>({
     type: Boolean,
     default: false,
   },
+  bio: {
+    type: String,
+  },
   fullname: {
     type: String,
     required: true,
