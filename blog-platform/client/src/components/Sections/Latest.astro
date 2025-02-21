@@ -4,22 +4,10 @@ import BlogCard from "../BlogCard/BlogCard.astro";
 const blogs = await getCollection("latest");
 ---
 
-<div id="layout">
-  {
-    blogs.splice(0, 6).map((blog) => (
-      <div class="card-md card-col">
-        <BlogCard data={blog} />
-      </div>
-    ))
-  }
-</div>
-
-<style>
-  #layout {
-    width: 1400px;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: flex-start;
-    gap: 2rem;
-  }
-</style>
+{
+  blogs.splice(0, 6).map((blog) => (
+    <div class="card-md">
+      <BlogCard data={blog} />
+    </div>
+  ))
+}

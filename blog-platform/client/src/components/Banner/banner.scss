@@ -98,6 +98,7 @@
         justify-items: center;
         width: 950px;
         text-align: center;
+        align-items: center;
       }
 
       h1,
@@ -134,6 +135,7 @@
       padding: 0px 5%;
       gap: 32px;
       @media only screen and (min-width: 1200px) {
+        width: auto;
         justify-items: center;
       }
     }

@@ -1,109 +1,204 @@
 @import "../../styles/variables";
 
-.card-col {
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-}
-
 .card-md {
-  width: 450px;
-  height: 600px;
   cursor: pointer;
-}
+  width: 320px;
+  height: 200px;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: flex-start;
+  flex-direction: column;
+  flex-wrap: wrap;
+  gap: 8px;
+  // border: 1px solid red;
 
-.card-md.card-col {
+  @media only screen and (min-width: 600px) {
+    max-width: 450px;
+    height: 400px;
+  }
+  @media only screen and (min-width: 768px) {
+    height: 600px;
+  }
+
   .card-image {
-    width: 450px;
-    height: 280px;
+    width: 140px;
+    height: 200px;
     object-fit: cover;
     object-position: center;
+
+    @media only screen and (min-width: 600px) {
+    }
+    @media only screen and (min-width: 768px) {
+      width: 450px;
+      height: 280px;
+    }
   }
 
   #card-content {
-    padding: 16px 0;
     display: flex;
-    width: 450px;
+    width: 170px;
     flex-direction: column;
-    gap: 8px;
     align-items: flex-start;
     justify-content: flex-start;
 
+    @media only screen and (min-width: 600px) {
+    }
+    @media only screen and (min-width: 768px) {
+      gap: 8px;
+      padding: 16px 0;
+      width: 450px;
+    }
+
     #card-timestamp {
       display: flex;
-      width: 450px;
+      padding: 0 4px 0 0;
+      width: 100%;
       align-items: flex-start;
       justify-content: space-between;
+
+      @media only screen and (min-width: 600px) {
+      }
+      @media only screen and (min-width: 768px) {
+        width: 450px;
+      }
 
       span {
         color: $secondary-text;
         font-family: "Outfit", sans-serif;
         font-weight: 300;
-        font-size: 1rem;
+        font-size: 12px;
+
+        @media only screen and (min-width: 600px) {
+        }
+        @media only screen and (min-width: 768px) {
+          font-size: 1rem;
+        }
       }
     }
     #card-tag {
       display: flex;
-      gap: 4px;
-      width: 450px;
+      width: 100%;
+      gap: 2px;
+
+      @media only screen and (min-width: 600px) {
+      }
+      @media only screen and (min-width: 768px) {
+        width: 450px;
+        gap: 4px;
+      }
       div {
         padding: 2px 0;
         color: $secondary-text;
         font-family: "Outfit", sans-serif;
         font-weight: 300;
-        font-size: 1rem;
+        font-size: 12px;
+
+        @media only screen and (min-width: 600px) {
+        }
+        @media only screen and (min-width: 768px) {
+          font-size: 1rem;
+        }
       }
     }
 
     h2 a {
-      width: 450px;
       font-family: "Outfit", sans-serif;
       font-weight: 600;
-      font-size: 2rem;
       color: $text-color;
+      width: 100%;
+      font-size: 1.4rem;
+      overflow: hidden;
+      height: 40px;
+
+      @media only screen and (min-width: 600px) {
+      }
+      @media only screen and (min-width: 768px) {
+        width: 450px;
+        font-size: 2rem;
+      }
 
       :hover {
         color: $accent;
       }
     }
     p {
-      width: 450px;
       font-family: "Outfit", sans-serif;
       font-weight: 400;
-      font-size: 1rem;
       color: $secondary-text;
+      width: 100%;
+      font-size: 12px;
+      max-height: 48px;
+      min-height: 32px;
+      overflow: hidden;
+
+      @media only screen and (min-width: 600px) {
+      }
+      @media only screen and (min-width: 768px) {
+        width: 450px;
+        font-size: 1rem;
+      }
     }
   }
 
   #card-author {
     display: flex;
-    width: 450px;
-    gap: 10px;
+    width: 170px;
     align-items: center;
     flex-direction: row;
     justify-content: flex-start;
+    gap: 10px;
+
+    @media only screen and (min-width: 600px) {
+    }
+    @media only screen and (min-width: 768px) {
+      width: 450px;
+    }
 
     img {
-      width: 64px;
-      height: 64px;
+      width: 40px;
+      height: 40px;
       border-radius: 50%;
       object-fit: cover;
       object-position: center;
+
+      @media only screen and (min-width: 600px) {
+      }
+      @media only screen and (min-width: 768px) {
+        width: 64px;
+        height: 64px;
+      }
     }
     div {
       display: flex;
       flex-direction: column;
       gap: 2px;
+
+      @media only screen and (min-width: 600px) {
+      }
+      @media only screen and (min-width: 768px) {
+      }
       #subtext {
         font-family: "Outfit";
         font-weight: 500;
         color: $secondary-text;
-        font-size: 1rem;
+        font-size: 12px;
+
+        @media only screen and (min-width: 600px) {
+        }
+        @media only screen and (min-width: 768px) {
+          font-size: 1rem;
+        }
       }
       #author {
         font-family: "Outfit";
         font-weight: 500;
-        font-size: 1.25rem;
+        font-size: 1rem;
+
+        @media only screen and (min-width: 600px) {
+        }
+        @media only screen and (min-width: 768px) {
+          font-size: 1.25rem;
+        }
       }
     }
   }

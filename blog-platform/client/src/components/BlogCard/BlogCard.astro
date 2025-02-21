@@ -24,11 +24,27 @@ const date = new Date(data.createdAt);
         })
       }</span
     >
-    <span>{data.views}</span>
+    <span style="display:flex; align-items:center; gap:3px;"
+      ><svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="1em"
+        height="1em"
+        viewBox="0 0 24 24"
+        ><g
+          fill="none"
+          stroke="currentColor"
+          strokeline-cap="round"
+          strokeline-join="round"
+          stroke-width="2"
+          ><path d="M10 12a2 2 0 1 0 4 0a2 2 0 0 0-4 0"></path><path
+            d="M21 12q-3.6 6-9 6t-9-6q3.6-6 9-6t9 6"></path></g
+        ></svg
+      >{data.views}</span
+    >
   </div>
   <div id="card-tag">
-    {data.tags.length !== 0 && data.tags.map((tag: any) => <div>{tag}</div>)}
-    <div>Blog</div>
+    {data.tags.length !== 0 && data.tags.map((tag: any) => <div>#{tag}</div>)}
+    <div>#Blog</div>
   </div>
   <h2><a href={`/blog/${data.id}`}>{data.title}</a></h2>
   <p>{data.body.split(" ").slice(0, 40).join(" ") + "..."}</p>
