@@ -56,3 +56,18 @@
     border: 4px solid white;
   }
 }
+
+.back-button {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  a {
+    font-size: 18px;
+    font-weight: 400;
+    padding: 8px;
+  }
+  :hover {
+    color: $accent;
+    border: none;
+  }
+}

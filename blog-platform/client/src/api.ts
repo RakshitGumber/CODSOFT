@@ -13,6 +13,7 @@ export const getBlogs = async () => {
     return { message: "error fetching data", error };
   }
 };
+
 export const getTrending = async () => {
   try {
     const response = await fetch(url + "/blog/trending");

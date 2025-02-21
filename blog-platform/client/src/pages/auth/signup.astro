@@ -1,35 +1,37 @@
 ---
 import MainLayout from "../../layouts/MainLayout.astro";
+import "../../styles/login.scss";
 ---
 
-<MainLayout title="Sign Up">
-  <form>
-    <div>
-      <label for="fullname">Full Name</label>
-      <input type="text" name="fullname" />
+<MainLayout title="Animee | Log In">
+  <button class="back-button">
+    <a href="../">&lt;_</a>
+  </button>
+  <form id="login-form">
+    <div class="form-header">
+      <h1>Create Account</h1>
+      <span>Create an account now for free</span>
     </div>
-    <div>
+    <div class="input-box">
       <label for="email">Email</label>
-      <input type="email" name="email" />
+      <input type="text" placeholder="email" name="email" />
     </div>
-    <div>
-      <label for="username">Username</label>
-      <input type="text" name="username" />
+    <div class="input-box">
+      <label for="username">UserName</label>
+      <input type="text" placeholder="username" name="username" />
     </div>
-    <div>
+    <div class="input-box">
+      <label for="fullname">Full Name</label>
+      <input type="text" placeholder="full name" name="fullname" />
+    </div>
+    <div class="input-box">
       <label for="password">Password</label>
-      <input type="password" name="password" />
+      <input type="password" placeholder="password" name="password" />
     </div>
-    <button id="signup">Sign Up</button>
+    <button id="signup" class="submit-button">Submit</button>
+    <span>Already a user? <a href="./login">Login</a></span>
   </form>
-  <span>Already a user? <a href="/auth/login">Login</a></span>
 </MainLayout>
-
-<style>
-  input {
-    border: 1px solid black;
-  }
-</style>
 
 <!-- <script>
   import { signup } from "../../api";

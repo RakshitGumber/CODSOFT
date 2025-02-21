@@ -6,12 +6,16 @@ import Links from "../components/Links/Links.astro";
 import Section from "../components/Sections/Section.astro";
 import Latest from "../components/Sections/Latest.astro";
 import Trending from "../components/Sections/Trending.astro";
+import Create from "../components/Sections/Create.astro";
 ---
 
 <MainLayout title="animee">
   <Navbar />
   <Banner />
   <Links />
+  <Section header="Create">
+    <Create />
+  </Section>
   <Section header="Trending"><Trending /></Section>
   <Section header="Latest"><Latest /></Section>
 </MainLayout>

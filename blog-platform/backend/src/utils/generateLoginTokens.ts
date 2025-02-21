@@ -12,11 +12,11 @@ export const generateTokens = async (email: string) => {
   }
 
   const accessToken = jwt.sign({ email }, JWT_SECRET, {
-    expiresIn: "15m",
+    expiresIn: "1d",
   });
 
   const refreshToken = jwt.sign({ email }, REFRESH_TOKEN_SECRET, {
-    expiresIn: "1d",
+    expiresIn: "7d",
   });
 
   return { accessToken, refreshToken };

@@ -10,13 +10,14 @@
   flex-direction: column;
   flex-wrap: wrap;
   gap: 8px;
-  // border: 1px solid red;
 
   @media only screen and (min-width: 600px) {
-    max-width: 450px;
+    justify-content: flex-start;
+    width: 250px;
     height: 400px;
   }
-  @media only screen and (min-width: 768px) {
+  @media only screen and (min-width: 1200px) {
+    width: 450px;
     height: 600px;
   }
 
@@ -27,8 +28,9 @@
     object-position: center;
 
     @media only screen and (min-width: 600px) {
+      width: 100%;
     }
-    @media only screen and (min-width: 768px) {
+    @media only screen and (min-width: 1200px) {
       width: 450px;
       height: 280px;
     }
@@ -42,9 +44,10 @@
     justify-content: flex-start;
 
     @media only screen and (min-width: 600px) {
-    }
-    @media only screen and (min-width: 768px) {
+      width: 100%;
       gap: 8px;
+    }
+    @media only screen and (min-width: 1200px) {
       padding: 16px 0;
       width: 450px;
     }
@@ -57,8 +60,9 @@
       justify-content: space-between;
 
       @media only screen and (min-width: 600px) {
+        width: 100%;
       }
-      @media only screen and (min-width: 768px) {
+      @media only screen and (min-width: 1200px) {
         width: 450px;
       }
 
@@ -70,7 +74,7 @@
 
         @media only screen and (min-width: 600px) {
         }
-        @media only screen and (min-width: 768px) {
+        @media only screen and (min-width: 1200px) {
           font-size: 1rem;
         }
       }
@@ -82,7 +86,7 @@
 
       @media only screen and (min-width: 600px) {
       }
-      @media only screen and (min-width: 768px) {
+      @media only screen and (min-width: 1200px) {
         width: 450px;
         gap: 4px;
       }
@@ -95,7 +99,7 @@
 
         @media only screen and (min-width: 600px) {
         }
-        @media only screen and (min-width: 768px) {
+        @media only screen and (min-width: 1200px) {
           font-size: 1rem;
         }
       }
@@ -111,8 +115,9 @@
       height: 40px;
 
       @media only screen and (min-width: 600px) {
+        width: 100%;
       }
-      @media only screen and (min-width: 768px) {
+      @media only screen and (min-width: 1200px) {
         width: 450px;
         font-size: 2rem;
       }
@@ -131,9 +136,9 @@
       min-height: 32px;
       overflow: hidden;
 
-      @media only screen and (min-width: 600px) {
-      }
-      @media only screen and (min-width: 768px) {
+      @media only screen and (min-width: 1200px) {
+        max-height: fit-content;
+        min-height: 32px;
         width: 450px;
         font-size: 1rem;
       }
@@ -149,8 +154,9 @@
     gap: 10px;
 
     @media only screen and (min-width: 600px) {
+      width: 100%;
     }
-    @media only screen and (min-width: 768px) {
+    @media only screen and (min-width: 1200px) {
       width: 450px;
     }
 
@@ -163,7 +169,7 @@
 
       @media only screen and (min-width: 600px) {
       }
-      @media only screen and (min-width: 768px) {
+      @media only screen and (min-width: 1200px) {
         width: 64px;
         height: 64px;
       }
@@ -175,7 +181,7 @@
 
       @media only screen and (min-width: 600px) {
       }
-      @media only screen and (min-width: 768px) {
+      @media only screen and (min-width: 1200px) {
       }
       #subtext {
         font-family: "Outfit";
@@ -185,7 +191,7 @@
 
         @media only screen and (min-width: 600px) {
         }
-        @media only screen and (min-width: 768px) {
+        @media only screen and (min-width: 1200px) {
           font-size: 1rem;
         }
       }
@@ -196,7 +202,7 @@
 
         @media only screen and (min-width: 600px) {
         }
-        @media only screen and (min-width: 768px) {
+        @media only screen and (min-width: 1200px) {
           font-size: 1.25rem;
         }
       }

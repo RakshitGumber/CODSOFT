@@ -1,22 +1,3 @@
----
-import MainLayout from "../layouts/MainLayout.astro";
----
-
-<MainLayout title="Create">
-  <div class="flex flex-col justify-center w-4/5 items-stretch mx-auto gap-4">
-    <div class="flex justify-evenly">
-      <button id="back">&lt;-</button>
-      <h1>Create</h1>
-      <button id="submit">Submit</button>
-    </div>
-    <div>
-      <label for="title">Title</label>
-      <input type="text" placeholder="title" name="title" />
-    </div>
-    <textarea name="body" id="body" class="border" placeholder="Enter a text"
-    ></textarea>
-  </div>
-</MainLayout>
 <!-- 
 <script>
   import { isLoggedIn } from "../store/userStore";

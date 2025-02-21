@@ -1,49 +1,36 @@
 ---
 import MainLayout from "../../layouts/MainLayout.astro";
+import "../../styles/login.scss";
 ---
 
-<MainLayout title="Log In">
-  <form>
-    <div>
+<MainLayout title="Animee | Log In">
+  <button class="back-button">
+    <a href="../">&lt;_</a>
+  </button>
+  <form id="login-form">
+    <div class="form-header">
+      <h1>Welcome Back</h1>
+      <span>Enter email, password to enter your account</span>
+    </div>
+    <div class="input-box">
       <label for="email">Email</label>
-      <input type="email" name="email" />
+      <input type="text" placeholder="email" name="email" />
     </div>
-    <div>
+    <div class="input-box">
       <label for="password">Password</label>
-      <input type="password" name="password" />
+      <input type="password" placeholder="password" name="password" />
     </div>
-    <button id="signup">Login</button>
+    <button id="signup" class="submit-button">Submit</button>
+    <span>New User? <a href="./signup">Sign Up</a></span>
   </form>
-  <span>New to Animee? <a href="/auth/signup">Signup</a></span>
 </MainLayout>
 
-<style>
-  input {
-    border: 1px solid black;
-  }
-</style>
-
-<!-- <script>
-  import { login } from "../../api";
-
-  const password = document.querySelector(
-    "input[name=password]"
-  ) as HTMLInputElement;
-
-  const email = document.querySelector("input[name=email]") as HTMLInputElement;
-  const signupButton = document.getElementById("signup") as HTMLElement;
+<script>
+  const password = document.querySelector("input[name=password]")!;
+  const email = document.querySelector("input[name=email]")!;
+  const signupButton = document.getElementById("signup")!;
 
   signupButton.addEventListener("click", async (e) => {
     e.preventDefault();
-    const { data } = await login({
-      email: email.value,
-      password: password.value,
-    });
-    const { refreshToken, accessToken, user } = await data.data.data;
-    console.log(refreshToken, accessToken, user);
-    localStorage.setItem("user", JSON.stringify(user));
-    localStorage.setItem("refreshToken", refreshToken);
-    localStorage.setItem("accessToken", accessToken);
-    return (location.href = "/");
   });
-</script> -->
+</script>
